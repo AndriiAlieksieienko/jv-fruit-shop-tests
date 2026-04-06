@@ -17,6 +17,7 @@ import core.basesyntax.strategy.impl.ReturnAccountHandler;
 import core.basesyntax.strategy.impl.SupplyAccountHandler;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +27,6 @@ class ShopServiceImplTest {
     @BeforeEach
     void setUp() {
         GoodsDao dao = new FruitDaoImpl();
-        Storage.getFruits().clear();
 
         Map<AccountType, AccountHandler> map = Map.of(
                 AccountType.BALANCE, new BalanceAccountHandler(),
@@ -38,6 +38,11 @@ class ShopServiceImplTest {
         AccountStrategy strategy = new AccountStrategyImpl(map);
 
         service = new ShopServiceImpl(dao, strategy);
+    }
+
+    @AfterEach
+    void reset() {
+        Storage.getFruits().clear();
     }
 
     @Test

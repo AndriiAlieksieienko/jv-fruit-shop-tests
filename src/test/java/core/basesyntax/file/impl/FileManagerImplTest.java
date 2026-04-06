@@ -40,7 +40,9 @@ class FileManagerImplTest {
 
     @Test
     void read_validInputData_ok() {
-        List<String[]> inputData = fileManager.read("resources" + File.separator + "input.csv");
+        String pathFolder =
+                "src" + File.separator + "main" + File.separator + "resources" + File.separator;
+        List<String[]> inputData = fileManager.read(pathFolder + "input.csv");
 
         assertEquals(8, inputData.size());
         assertArrayEquals(new String[]{"b", "banana", "20"}, inputData.get(0));

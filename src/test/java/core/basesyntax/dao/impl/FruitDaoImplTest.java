@@ -10,6 +10,7 @@ import core.basesyntax.db.Storage;
 import core.basesyntax.model.Accountable;
 import core.basesyntax.model.Fruit;
 import java.util.List;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,10 @@ class FruitDaoImplTest {
     @BeforeEach
     void setUp() {
         dao = new FruitDaoImpl();
+    }
+
+    @AfterEach
+    void reset() {
         Storage.getFruits().clear();
     }
 

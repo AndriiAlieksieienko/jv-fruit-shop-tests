@@ -1,4 +1,4 @@
-package core.basesyntax.main;
+package core.basesyntax;
 
 import core.basesyntax.dao.impl.FruitDaoImpl;
 import core.basesyntax.file.FileManager;
@@ -30,9 +30,11 @@ public class Main {
         ShopService shopService = new ShopServiceImpl(new FruitDaoImpl(), accountStrategy);
 
         FileManager fileManager = new FileManagerImpl();
-        List<String[]> inputData = fileManager.read("resources" + File.separator + "input.csv");
+        String pathFolder =
+                "src" + File.separator + "main" + File.separator + "resources" + File.separator;
+        List<String[]> inputData = fileManager.read(pathFolder + "input.csv");
 
         List<String[]> outputData = shopService.process(inputData);
-        fileManager.write(outputData, "resources" + File.separator + "output.csv");
+        fileManager.write(outputData, pathFolder + "output.csv");
     }
 }
