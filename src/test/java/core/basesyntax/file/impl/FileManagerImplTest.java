@@ -33,7 +33,7 @@ class FileManagerImplTest {
     void read_nullValue_throwsException() {
         String inputFile = null;
 
-        assertThrows(NullPointerException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             fileManager.read(inputFile);
         });
     }

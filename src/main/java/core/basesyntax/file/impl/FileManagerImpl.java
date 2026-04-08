@@ -9,12 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class FileManagerImpl implements FileManager {
     @Override
     public List<String[]> read(String inputFile) {
-        Objects.requireNonNull(inputFile, "Input file path cannot be null");
+        if (inputFile == null) {
+            throw new IllegalArgumentException("Input file path cannot be null");
+        }
 
         try {
             List<String> data = Files.readAllLines(Path.of(inputFile));
